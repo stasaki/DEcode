@@ -7,4 +7,4 @@ This tutorial shows you a way to run DEcode on [Google Colab](https://colab.rese
     - Menu -> File -> Open notebook -> GITHUB tab
     - Search `https://github.com/stasaki/DEcode`
     - Select `Run_DEcode.ipynb`
-3. Run each block of code. 
+3. Run each block of code.  
