@@ -1,0 +1,1 @@
+{"n_feature_mRNA": 372, "RNA_conv_strides": 2.0, "DNA_n_channel_1st": 120.0, "RNA_n_channel_1st": 160.0, "DNA_conv_strides": 1.0, "ConvRelu": "No", "FullRelu": "Yes", "n_feature_promoter": 726, "lr": 0.001, "Last_fullConLayer": 2.0, "Last_n_channel": 160.0, "n_feature_mRNA_basic": 1, "Add_basic_info": "No", "RNA_n_ConvLayer": 1.0, "n_out": 54, "DNA_n_ConvLayer": 4.0}
