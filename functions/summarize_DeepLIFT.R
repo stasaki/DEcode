@@ -1,3 +1,8 @@
+
+# Descriptions of outputs
+# RNA_importance_mean.txt: Average DeepLIFT score for each RNA regulator in each tissue.
+# promoter_importance_mean.txt: Average DeepLIFT score for each promoter regulator in each tissue.
+
 outloc = commandArgs(trailingOnly=TRUE)[1] 
 options(stringsAsFactors = FALSE)
 library(tidyverse)

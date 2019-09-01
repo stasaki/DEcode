@@ -1,4 +1,7 @@
 
+# Descriptions of outputs
+#loss_parameters.rds: Hyper paramters and performance of the 10 training runs.
+#best_model.txt: The best model among the 10 training runs. 
 
 outdir = commandArgs(trailingOnly=TRUE)[1] 
 #outdir = "./01_GTEX/network01/output/"

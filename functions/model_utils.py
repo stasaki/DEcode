@@ -3,12 +3,17 @@ def test_prediction(outloc,
                     X_mRNA_test,
                     X_promoter_test,
                     Y_test):
-    
+    # Inputs
     # outloc: a full path to a directory of the best model
     # best_model: name of the best model
     # X_mRNA_test: mRNA annoation data
     # X_promoter_test: Promoter annoatation data
     # Y_test: Transcriptome data     
+    
+    # Outputs
+    #.{outloc}/test_data/prediction.txt.gz: Predicted gene expression data
+    #.{outloc}/test_data/actual.txt.gz: Actual gene expression data
+    #.{outloc}/test_data/geneid.txt.gz: Genes in testing data.
     
     import layer_utils
     import metrics
@@ -62,13 +67,17 @@ def compute_DeepLIFT(outloc,
              X_mRNA_test,
              X_promoter_test,
              Y_test):
-    
+    # Input
     # outloc: a full path to a directory of the best model
     # best_model: name of the best model
     # X_mRNA_test: mRNA annoation data
     # X_promoter_test: Promoter annoatation data
     # Y_test: Transcriptome data    
     
+    # Output
+    #.{outloc}/{best_model}/DeepLIFT/DNA_{sample index}.txt.gz: DeepLIFT scores of DNA regulators for each sample. The sample index corresponds to the column index of gene expression data, which starts from 0. DeepLIFT scores of regulators were sparated with commas. Its order is identical to the one appeared in {outloc}/feature_norm_stats.txt   
+    #.{outloc}/{best_model}/DeepLIFT/RNA_{sample index}}.txt.gz: DeepLIFT scores of RNA regulators for each sample. The sample index corresponds to the column index of gene expression data, which starts from 0. DeepLIFT scores of regulators were sparated with commas. Its order is identical to the one appeared in {outloc}/feature_norm_stats.txt 
+
     from keras.layers import Dense
     from keras.models import Model
     import layer_utils
@@ -165,6 +174,7 @@ def coexpression_with_binding_site_removal(genes,
                                            X_mRNA_test,
                                            X_promoter_test,
                                            Y_test):
+    # Input:
     # genes: genes for testing coexpression
     # outloc: a full path to a directory of the best model
     # best_model: name of the best model
@@ -172,6 +182,8 @@ def coexpression_with_binding_site_removal(genes,
     # X_promoter_test: Promoter annoatation data
     # Y_test: Transcriptome data     
     
+    # Output:
+    #.{outloc}/{best_model}/binding_site_removal/coexpression.txt.gz: The 1st column indicates gene whose biniding sites were removed. The 2nd and the 3rd column indicates Spearman's correlation between genes and corresoponding p-value, respectively. The 4th column indicates indexes of RNA interval where biding sites were removed, separated by commas. The 5th column indicates indexes of promoter interval where biding sites were removed, separated by commas.
     import layer_utils
     import metrics
     from keras.models import load_model
@@ -249,6 +261,7 @@ def coexpression_with_KO(genes,
                          X_mRNA_test,
                          X_promoter_test,
                          Y_test):
+    # Input
     # genes: genes for testing coexpression
     # outloc: a full path to a directory of the best model
     # best_model: name of the best model
@@ -256,6 +269,9 @@ def coexpression_with_KO(genes,
     # X_promoter_test: Promoter annoatation data
     # Y_test: Transcriptome data     
     
+    # Output
+    #.{outloc}/{best_model}/regulator_KO/coexpression.txt.gz: The first column and the second column indicates Spearman's correlation between genes and corresoponding p-value, respectively. 3rd column indicates indexes of RNA regulators knockouted, separated by commas. 4th column indicates indexes of DNA regulators knockouted, separated by commas. Regulator index corresponds to one in {outloc}/feature_norm_stats.txt.           
+
     import layer_utils
     import metrics
     from keras.models import load_model
