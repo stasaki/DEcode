@@ -28,6 +28,17 @@ def load_ml_data(deg_data_file,
         for i in range(deg_data.shape[0]):
             deg_data.iloc[i,1:]  = deg_data.values[i,1:] - med_exp[i]
         deg_data['MedianExp'] = med_exp
+    elif ext==".gz":
+        deg_data = pd.read_csv(deg_data_file,sep="\t",compression='gzip')
+
+        if deg_data.columns[0] != 'Name':
+            print('The first column must be Name')
+            sys.exit(1) 
+
+        med_exp = np.median(deg_data.values[:,1:],axis=1)
+        for i in range(deg_data.shape[0]):
+            deg_data.iloc[i,1:]  = deg_data.values[i,1:] - med_exp[i]
+        deg_data['MedianExp'] = med_exp 
     elif ext==".pkl":
         deg_data = pd.read_pickle(deg_data_file)
         if deg_data.columns[-1] != "MedianExp":
