@@ -2,7 +2,7 @@
 
 The goal of this project is to enable you to utilize genomic big data in identifying regulatory mechanisms for any human expression data.
 
-![](https://github.com/stasaki/DEcode/blob/master/img/fig1.jpg)
+<img src="https://raw.githubusercontent.com/stasaki/DEcode/master/img/fig1.jpg" width="80%">
 
 ### Quick start
 
