@@ -1,5 +1,5 @@
 
-R and Python scripts except layer_utils.py in this repository is distributed under BSD3 license
+R and Python scripts except layer_utils.py in this repository are distributed under BSD3 license.
 Copyright (c) 2019, Shinya Tasaki
 All rights reserved.
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
