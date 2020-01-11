@@ -2,7 +2,7 @@
 
 The goal of this project is to enable you to utilize genomic big data in identifying regulatory mechanisms for differential expression (DE).
 
-DEcode predicts inter-tissue variations and inter-person variations in gene expression levels from [TF-promoter interactions](https://doi.org/10.1093/nar/gky1128), [RNABPs-mRNA interactions](https://doi.org/10.1093/nar/gky830), and [miRNA-mRNA interactions](https://doi.org/10.7554/eLife.05005). You can read more about this method in [this paper](https://doi.org/10.1101/2020.01.10.894238) where we conducted a series of evaluation and applications by predicting transcript usage, drivers of aging DE, gene coexpression relationships on a genome-wide scale, and frequent DE in diverse conditions.
+DEcode predicts inter-tissue variations and inter-person variations in gene expression levels from [TF-promoter interactions](https://doi.org/10.1093/nar/gky1128), [RNABP-mRNA interactions](https://doi.org/10.1093/nar/gky830), and [miRNA-mRNA interactions](https://doi.org/10.7554/eLife.05005). You can read more about this method in [this paper](https://doi.org/10.1101/2020.01.10.894238) where we conducted a series of evaluation and applications by predicting transcript usage, drivers of aging DE, gene coexpression relationships on a genome-wide scale, and frequent DE in diverse conditions.
 
 <img src="https://raw.githubusercontent.com/stasaki/DEcode/master/img/fig1.jpg" width="80%">
 
