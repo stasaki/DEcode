@@ -182,20 +182,20 @@ def prep_ml_data_split(deg_data_file,
     train = pd.read_csv(train_genes,sep="\t",header=None,compression='gzip').values[:,0]
 
     # Split mRNA feature
-    X_mRNA_train=mRNA_data.query("Name in @train")
-    X_mRNA_validate=mRNA_data.query("Name in @validate")
-    X_mRNA_test=mRNA_data.query("Name in @test")
+    X_mRNA_train=mRNA_data.query("Name in @train").copy()
+    X_mRNA_validate=mRNA_data.query("Name in @validate").copy()
+    X_mRNA_test=mRNA_data.query("Name in @test").copy()
 
     # Split promoter feature
-    X_promoter_train=promoter_data.query("Name in @train")
-    X_promoter_validate=promoter_data.query("Name in @validate")
-    X_promoter_test=promoter_data.query("Name in @test")
+    X_promoter_train=promoter_data.query("Name in @train").copy()
+    X_promoter_validate=promoter_data.query("Name in @validate").copy()
+    X_promoter_test=promoter_data.query("Name in @test").copy()
 
 
     # Split target data
-    Y_train=deg_data.query("Name in @train")
-    Y_validate=deg_data.query("Name in @validate")
-    Y_test=deg_data.query("Name in @test")
+    Y_train=deg_data.query("Name in @train").copy()
+    Y_validate=deg_data.query("Name in @validate").copy()
+    Y_test=deg_data.query("Name in @test").copy()
 
     # Scale fold changes
     std=Y_train.values[:,1:(Y_train.shape[1]-1)].std()
