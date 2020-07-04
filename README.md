@@ -30,7 +30,7 @@ You can run DEcode on [Code Ocean platform](https://doi.org/10.24433/CO.0084803.
 DEcode - [Tasaki, S., Gaiteri, C., Mostafavi, S. & Wang, Y. Decoding differential gene expression. bioRxiv 2020.01.10.894238; doi: https://doi.org/10.1101/2020.01.10.894238](https://doi.org/10.1101/2020.01.10.894238)
 
 
-#### The data sources for GTEx data, Transcription factor and RNA binding protein binding peaks, and miRNA binding locations are available in the following databases. 
+#### Source databases for traning data. 
 * GTEx transcriptome data - [GTEx portal](https://www.gtexportal.org/home/)
 * Transcription factor binding peaks - [GTRD](https://doi.org/10.1093/nar/gky1128)
 * RNA binding protein binding peaks - [POSTAR2](https://doi.org/10.1093/nar/gky830)
