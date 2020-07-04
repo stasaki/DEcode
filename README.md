@@ -25,12 +25,15 @@ You can run DEcode on [Code Ocean platform](https://doi.org/10.24433/CO.0084803.
 
 
 
-### Citations
-
-GTRD - [Yevshin, I., Sharipov, R., Kolmykov, S., Kondrakhin, Y. & Kolpakov, F. GTRD: a database on gene transcription regulation—2019 update. Nucleic Acids Res 47, D100-D105 (2019).](https://doi.org/10.1093/nar/gky1128)
-
-POSTAR2 - [Zhu, Y. et al. POSTAR2: deciphering the post-transcriptional regulatory logics. Nucleic acids research 47, D203-D211 (2019).](https://doi.org/10.1093/nar/gky830)
-
-TargetScan - [Agarwal, V., Bell, G. W., Nam, J. & Bartel, D. P. Predicting effective microRNA target sites in mammalian mRNAs. eLife 4 (2015).](https://doi.org/10.7554/eLife.05005)
+#### If you find DEcode useful in your work, please cite our manuscript.
 
 DEcode - [Tasaki, S., Gaiteri, C., Mostafavi, S. & Wang, Y. Decoding differential gene expression. bioRxiv 2020.01.10.894238; doi: https://doi.org/10.1101/2020.01.10.894238](https://doi.org/10.1101/2020.01.10.894238)
+
+
+#### The data sources for GTEx data, Transcription factor and RNA binding protein binding peaks, and miRNA binding locations are available in the following databases. 
+* GTEx transcriptome data - [GTEx portal](https://www.gtexportal.org/home/)
+* Transcription factor binding peaks - [GTRD](https://doi.org/10.1093/nar/gky1128)
+* RNA binding protein binding peaks - [POSTAR2](https://doi.org/10.1093/nar/gky830)
+* miRNA binding locations - [TargetScan](https://doi.org/10.7554/eLife.05005)
+
+
