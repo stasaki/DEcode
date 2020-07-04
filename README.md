@@ -8,7 +8,7 @@ You can read more about this method in [this paper](https://doi.org/10.1101/2020
 
 <img src="https://raw.githubusercontent.com/stasaki/DEcode/master/img/fig1.jpg" width="80%">
 
-### Quick start
+### Run DEcode on Google Colab
 
 This tutorial shows you a way to run DEcode on [Google Colab](https://colab.research.google.com) that provides you free access to a ready-to-use machine learning environment with a high-end GPU.
 
@@ -18,6 +18,12 @@ This tutorial shows you a way to run DEcode on [Google Colab](https://colab.rese
     - Search `https://github.com/stasaki/DEcode`
     - Select `Run_DEcode.ipynb`
 3. Run each block of code.  
+
+### Run DEcode on Code Ocean
+
+You can run DEcode on [Code Ocean platform](https://doi.org/10.24433/CO.0084803.v1) without setting up computational environment. Our Code Ocean capsule providesr reproducible workflows, pre-processed data, and pre-trained models for tissue- and person-specific transcriptomes.   
+
+
 
 ### Citations
 
