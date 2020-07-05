@@ -17,7 +17,9 @@ This tutorial shows you a way to run DEcode on [Google Colab](https://colab.rese
     - Menu -> File -> Open notebook -> GITHUB tab
     - Search `https://github.com/stasaki/DEcode`
     - Select `Run_DEcode_toy.ipynb`
-3. Run each block of code.  
+3. Run each block of code.
+
+Gene level features for all genes are available at data/GTEx53_gene/DEcode_data.tar.gz. However, due to the memory limitation in Google Colab, you cannot train a model with all genes. Please consider setting up Keras with GPU in your environment or use Code Ocean platform.   
 
 ### Run DEcode on Code Ocean
 
