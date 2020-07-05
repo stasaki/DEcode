@@ -21,7 +21,7 @@ This tutorial shows you a way to run DEcode on [Google Colab](https://colab.rese
 
 ### Run DEcode on Code Ocean
 
-You can run DEcode on [Code Ocean platform](https://doi.org/10.24433/CO.0084803.v1) without setting up computational environment. Our Code Ocean capsule providesr reproducible workflows, pre-processed data, and pre-trained models for tissue- and person-specific transcriptomes.   
+You can run DEcode on [Code Ocean platform](https://doi.org/10.24433/CO.0084803.v1) without setting up a computational environment. Our Code Ocean capsule provides reproducible workflows, all processed data, and pre-trained models for tissue- and person-specific transcriptomes and DEprior, at gene- or transcript level.   
 
 
 
