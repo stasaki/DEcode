@@ -16,7 +16,7 @@ This tutorial shows you a way to run DEcode on [Google Colab](https://colab.rese
 2. Open Jupyter notebook.
     - Menu -> File -> Open notebook -> GITHUB tab
     - Search `https://github.com/stasaki/DEcode`
-    - Select `Run_DEcode.ipynb`
+    - Select `Run_DEcode_toy.ipynb`
 3. Run each block of code.  
 
 ### Run DEcode on Code Ocean
