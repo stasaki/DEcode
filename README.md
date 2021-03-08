@@ -8,23 +8,9 @@ You can read more about this method in [this paper](https://doi.org/10.1038/s422
 
 <img src="https://raw.githubusercontent.com/stasaki/DEcode/master/img/fig1.jpg" width="80%">
 
-### Run DEcode on Google Colab
-
-This tutorial shows you a way to run DEcode on [Google Colab](https://colab.research.google.com) that provides you free access to a ready-to-use machine learning environment with a high-end GPU.
-
-1. Go to [Google Colab](https://colab.research.google.com) and sign in to your Google account.
-2. Open Jupyter notebook.
-    - Menu -> File -> Open notebook -> GITHUB tab
-    - Search `https://github.com/stasaki/DEcode`
-    - Select `Run_DEcode_toy.ipynb`
-3. Run each block of code.
-
-Gene level features for all genes are available at data/GTEx53_gene/DEcode_data.tar.gz. However, due to the memory limitation in Google Colab, you cannot train a model with all genes. Please consider setting up Keras with GPU in your environment or use Code Ocean platform.   
-
 ### Run DEcode on Code Ocean
 
 You can run DEcode on [Code Ocean platform](https://doi.org/10.24433/CO.0084803.v1) without setting up a computational environment. Our Code Ocean capsule provides reproducible workflows, all processed data, and pre-trained models for tissue- and person-specific transcriptomes and DEprior, at gene- or transcript level.   
-
 
 
 #### If you find DEcode useful in your work, please cite our manuscript.
