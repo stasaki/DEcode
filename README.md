@@ -43,13 +43,13 @@ This will create directories gtf and bed, and download the GTF file and two eCLI
 
 - Convert genome coordinates to RNA coordinates using the following command:
 ```bash
-Rscript script/bed_to_RNA_coord.R -b ./bed/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -o custom
+Rscript functions/bed_to_RNA_coord.R -b ./bed/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -o custom
 ```
 This will convert bed files in the genome coordinates in the ./bed/ directory to RNA coordinates using the gencode.v19.genes.v7.patched_contigs.gtf file and output as custom.txt.
 
 - To convert RNA-coordinate peaks to Pandas format, use the following command:
 ```bash
-python script/to_sparse.py custom.txt
+python functions/to_sparse.py custom.txt
 ```
 This will convert the RNA-coordinate peaks in the custom.txt file to a sparse Pandas DataFrame (custom.pkl).
 
