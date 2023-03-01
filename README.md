@@ -43,7 +43,7 @@ This will create directories gtf and bed, and download the GTF file and two eCLI
 
 Our input data for the gene-level model was constructed based on the gencode.v19.transcripts.patched_contigs.gtf file from the GTEXv7 dataset. This file contains only one representative transcript for each gene for the human genome (hg19).
 
-If you use a different gene model, please make sure to select a representative transcript for each gene before running the pipeline.
+If you use a different gene model, please make sure to filter GTF file and select a representative transcript for each gene before running the pipeline.
 
 The input data for the transcript-level model was created based on  `https://storage.googleapis.com/gtex_analysis_v7/reference/gencode.v19.transcripts.patched_contigs.gtf`. It is not necessary to filter the GTF file for the transcript-level model.
 
