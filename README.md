@@ -14,7 +14,7 @@ You can run DEcode on [Code Ocean platform](https://doi.org/10.24433/CO.0084803.
 
 ### Add RNA features
 #### Prerequisites
-Before running the code in this repository, you must have the following python libraries installed on your system:
+Before running the scripts to create custom input data, you must have the following python libraries installed on your system:
 
 - pandas
 - scipy
