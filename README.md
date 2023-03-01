@@ -55,7 +55,7 @@ This will convert the RNA-coordinate peaks in the custom.txt file to a sparse Pa
 
 - Place custom.pkl in the directory where RNA features are located, for example: ./data/toy/RNA_features/.
 
-- Modify the code as follows:
+- Modify the code (Run_DEcode_toy.ipynb) as follows:
 ```python
 mRNA_data_loc = "./data/toy/RNA_features/"
 mRNA_annotation_data = ["POSTAR","TargetScan","custom"]
