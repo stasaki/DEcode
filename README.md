@@ -29,7 +29,7 @@ Also you need to install the following R packages:
 - optparse
 
 #### Usage
-- First, download the example files by running the following commands:
+1. First, download the example files by running the following commands:
 ```bash
 #GTF file from GTEXv7 (hg19)
 mkdir gtf
@@ -47,21 +47,21 @@ If you use a different gene model, please make sure to select a representative t
 
 The input data for the transcript-level model was created based on  `https://storage.googleapis.com/gtex_analysis_v7/reference/gencode.v19.transcripts.patched_contigs.gtf`. It is not necessary to filter the GTF file for the transcript-level model.
 
-1. Convert genome coordinates to RNA coordinates using the following command:
+2. Convert genome coordinates to RNA coordinates using the following command:
 ```bash
 Rscript functions/bed_to_RNA_coord.R -b ./bed/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -o custom
 ```
 This will convert bed files in the genome coordinates in the ./bed/ directory to RNA coordinates using the gencode.v19.genes.v7.patched_contigs.gtf file and output as custom.txt.
 
-- To convert RNA-coordinate peaks to Pandas format, use the following command:
+3. To convert RNA-coordinate peaks to Pandas format, use the following command:
 ```bash
 python functions/to_sparse.py custom.txt
 ```
 This will convert the RNA-coordinate peaks in the custom.txt file to a sparse Pandas DataFrame (custom.pkl).
 
-- Place custom.pkl in the directory where RNA features are located, for example: ./data/toy/RNA_features/.
+4. Place custom.pkl in the directory where RNA features are located, for example: ./data/toy/RNA_features/.
 
-- Modify the code (Run_DEcode_toy.ipynb) as follows:
+5. Modify the code (Run_DEcode_toy.ipynb) as follows:
 ```python
 mRNA_data_loc = "./data/toy/RNA_features/"
 mRNA_annotation_data = ["POSTAR","TargetScan","custom"]
