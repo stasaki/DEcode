@@ -47,7 +47,7 @@ If you use a different gene model, please make sure to select a representative t
 
 The input data for the transcript-level model was created based on  `https://storage.googleapis.com/gtex_analysis_v7/reference/gencode.v19.transcripts.patched_contigs.gtf`. It is not necessary to filter the GTF file for the transcript-level model.
 
-- Convert genome coordinates to RNA coordinates using the following command:
+1. Convert genome coordinates to RNA coordinates using the following command:
 ```bash
 Rscript functions/bed_to_RNA_coord.R -b ./bed/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -o custom
 ```
