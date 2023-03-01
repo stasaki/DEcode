@@ -45,6 +45,8 @@ Our input data for the gene-level model was constructed based on the gencode.v19
 
 If you use a different gene model, please make sure to select a representative transcript for each gene before running the pipeline.
 
+The input data for the transcript-level model was created based on  `https://storage.googleapis.com/gtex_analysis_v7/reference/gencode.v19.transcripts.patched_contigs.gtf`. 
+
 - Convert genome coordinates to RNA coordinates using the following command:
 ```bash
 Rscript functions/bed_to_RNA_coord.R -b ./bed/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -o custom
