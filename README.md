@@ -12,6 +12,45 @@ You can read more about this method in [this paper](https://doi.org/10.1038/s422
 
 You can run DEcode on [Code Ocean platform](https://doi.org/10.24433/CO.0084803.v1) without setting up a computational environment. Our Code Ocean capsule provides reproducible workflows, all processed data, and pre-trained models for tissue- and person-specific transcriptomes and DEprior, at gene- or transcript level.   
 
+### Add RNA features
+#### Prerequisites
+Before running the code in this repository, you must have the following python libraries installed on your system:
+
+- pandas
+- scipy
+
+Also you need to install the following R packages:
+
+- GenomicFeatures
+- tidyverse
+- data.table
+- rtracklayer
+- plyranges
+- optparse
+
+#### Usage
+- Download example files
+```bash
+#GTF file from GTEXv7 (hg19)
+mkdir gtf
+wget https://storage.googleapis.com/gtex_analysis_v7/reference/gencode.v19.genes.v7.patched_contigs.gtf -P ./gtf/
+#eCLIP-seq peaks from Encode (hg19)
+mkdir bed
+wget https://www.encodeproject.org/files/ENCFF039BKT/@@download/ENCFF039BKT.bed.gz -P ./bed/
+wget https://www.encodeproject.org/files/ENCFF379UQU/@@download/ENCFF379UQU.bed.gz -P ./bed/
+```
+
+- Convert genome coordinates to RNA coordinates using the following command:
+```bash
+Rscript script/bed_to_RNA_coord.R -b ./bed/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -o custom
+```
+This will convert bed files in the genome coordinates in the ./bed/ directory to RNA coordinates using the gencode.v19.genes.v7.patched_contigs.gtf file and output as custom.txt.
+
+- To convert RNA-coordinate peaks to Pandas format, use the following command:
+```bash
+python script/to_sparse.py custom.txt
+```
+This will convert the RNA-coordinate peaks in the custom.txt file to a sparse Pandas DataFrame (custom.pkl).
 
 #### If you find DEcode useful in your work, please cite our manuscript.
 
