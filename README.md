@@ -41,6 +41,10 @@ wget https://www.encodeproject.org/files/ENCFF379UQU/@@download/ENCFF379UQU.bed.
 ```
 This will create directories gtf and bed, and download the GTF file and two eCLIP-seq bed files into them.
 
+Our input data for the gene-level model was constructed based on the gencode.v19.transcripts.patched_contigs.gtf file from the GTEXv7 dataset. This file contains only one representative transcript for each gene for the human genome (hg19).
+
+If you use a different gene model, please make sure to select a representative transcript for each gene before running the pipeline.
+
 - Convert genome coordinates to RNA coordinates using the following command:
 ```bash
 Rscript functions/bed_to_RNA_coord.R -b ./bed/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -o custom
