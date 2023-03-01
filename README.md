@@ -29,7 +29,7 @@ Also you need to install the following R packages:
 - optparse
 
 #### Usage
-- Download example files
+- First, download the example files by running the following commands:
 ```bash
 #GTF file from GTEXv7 (hg19)
 mkdir gtf
@@ -39,6 +39,7 @@ mkdir bed
 wget https://www.encodeproject.org/files/ENCFF039BKT/@@download/ENCFF039BKT.bed.gz -P ./bed/
 wget https://www.encodeproject.org/files/ENCFF379UQU/@@download/ENCFF379UQU.bed.gz -P ./bed/
 ```
+This will create directories gtf and bed, and download the GTF file and two eCLIP-seq bed files into them.
 
 - Convert genome coordinates to RNA coordinates using the following command:
 ```bash
