@@ -53,6 +53,16 @@ python script/to_sparse.py custom.txt
 ```
 This will convert the RNA-coordinate peaks in the custom.txt file to a sparse Pandas DataFrame (custom.pkl).
 
+- Place custom.pkl in the directory where RNA features are located, for example: ./data/toy/RNA_features/.
+
+- Modify the code as follows:
+```python
+mRNA_data_loc = "./data/toy/RNA_features/"
+mRNA_annotation_data = ["POSTAR","TargetScan","custom"]
+```
+This will update the location of the mRNA data and specify that the custom.pkl file should be used as part of the RNA annotation data.
+
+
 #### If you find DEcode useful in your work, please cite our manuscript.
 
 Tasaki, S., Gaiteri, C., Mostafavi, S. & Wang, Y. Deep learning decodes the principles of differential gene expression.  Nature Machine Intelligence (2020) [[link to paper](https://doi.org/10.1038/s42256-020-0201-6)] (full text is available at [https://rdcu.be/b5r3p](https://rdcu.be/b5r3p))
