@@ -84,7 +84,7 @@ mRNA_annotation_data = ["POSTAR","TargetScan","custom_RNA"]
 promoter_data_loc = "./data/toy/Promoter_features/"
 promoter_annotation_data = ["GTRD","custom_promoter"]
 ```
-This modification to the code will instruct it to utilize the custom_RNA.pkl and custom_promoter.pkl files as part of the RNA annotation data and promoter annotation data, respectively.
+This modification to the code will instruct it to utilize the `custom_RNA.pkl` and `custom_promoter.pkl` files as part of the RNA annotation data and promoter annotation data, respectively.
 
 
 
