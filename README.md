@@ -56,10 +56,11 @@ This will convert bed files in the genome coordinates in the ./bed/ directory to
 3. To convert RNA-coordinate peaks to Pandas format, use the following command:
 ```bash
 python functions/to_sparse.py custom_RNA.txt
+rm custom_RNA.txt 
 ```
 This will convert the RNA-coordinate peaks in the custom.txt file to a sparse Pandas DataFrame (custom_RNA.pkl).
 
-4. Place custom_RNA.pkl in the directory where RNA features are located, for example: ./data/toy/RNA_features/.
+4. Place `custom_RNA.pkl`, `custom_RNA_gene_name.txt.gz`, and `custom_RNA_feature_name.txt.gz` in the directory where RNA features are located, for example: `./data/toy/RNA_features/`.
 
 5. Modify the code (Run_DEcode_toy.ipynb) as follows:
 ```python
