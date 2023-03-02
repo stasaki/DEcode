@@ -35,11 +35,11 @@ Also you need to install the following R packages:
 mkdir gtf
 wget https://storage.googleapis.com/gtex_analysis_v7/reference/gencode.v19.genes.v7.patched_contigs.gtf -P ./gtf/
 #eCLIP-seq peaks from Encode (hg19)
-mkdir bed
-wget https://www.encodeproject.org/files/ENCFF039BKT/@@download/ENCFF039BKT.bed.gz -P ./bed/
-wget https://www.encodeproject.org/files/ENCFF379UQU/@@download/ENCFF379UQU.bed.gz -P ./bed/
+mkdir bed_rna
+wget https://www.encodeproject.org/files/ENCFF039BKT/@@download/ENCFF039BKT.bed.gz -P ./bed_rna/
+wget https://www.encodeproject.org/files/ENCFF379UQU/@@download/ENCFF379UQU.bed.gz -P ./bed_rna/
 ```
-This will create directories gtf and bed, and download the GTF file and two eCLIP-seq bed files into them.
+This will create directories gtf and bed_rna, and download the GTF file and two eCLIP-seq bed files into them.
 
 Our input data for the gene-level model was constructed based on the gencode.v19.transcripts.patched_contigs.gtf file from the GTEXv7 dataset. This file contains only one representative transcript for each gene for the human genome (hg19).
 
@@ -49,7 +49,7 @@ The input data for the transcript-level model was created based on  `https://sto
 
 2. Convert genome coordinates to RNA coordinates using the following command:
 ```bash
-Rscript functions/bed_to_RNA_coord.R -b ./bed/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -o custom_RNA
+Rscript functions/bed_to_RNA_coord.R -b ./bed_rna/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -t rna -o custom_RNA
 ```
 This will convert bed files in the genome coordinates in the ./bed/ directory to RNA coordinates using the gencode.v19.genes.v7.patched_contigs.gtf file and output as custom_RNA.txt.
 
