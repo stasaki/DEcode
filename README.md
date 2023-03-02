@@ -51,7 +51,7 @@ The input data for the transcript-level model was created based on  `https://sto
 ```bash
 Rscript functions/bed_to_RNA_coord.R -b ./bed_rna/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -t rna -o custom_RNA
 ```
-This will convert bed files in the genome coordinates in the ./bed/ directory to RNA coordinates using the gencode.v19.genes.v7.patched_contigs.gtf file and output as custom_RNA.txt.
+This will convert bed files in the genome coordinates in the ./bed/ directory to RNA coordinates using the gencode.v19.genes.v7.patched_contigs.gtf file and output as `custom_RNA.txt`.
 
 3. To convert RNA-coordinate peaks to Pandas format, use the following command:
 ```bash
