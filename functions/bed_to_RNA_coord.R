@@ -1,17 +1,21 @@
 
-
-# wget https://www.encodeproject.org/files/ENCFF039BKT/@@download/ENCFF039BKT.bed.gz 
-# wget https://www.encodeproject.org/files/ENCFF379UQU/@@download/ENCFF379UQU.bed.gz
+# ChIP-seq
+# wget https://www.encodeproject.org/files/ENCFF553GPK/@@download/ENCFF553GPK.bed.gz -P ./bed/
+# wget https://www.encodeproject.org/files/ENCFF549TYR/@@download/ENCFF549TYR.bed.gz -P ./bed/
+# eCLIP-seq
+# wget https://www.encodeproject.org/files/ENCFF039BKT/@@download/ENCFF039BKT.bed.gz -P ./bed/
+# wget https://www.encodeproject.org/files/ENCFF379UQU/@@download/ENCFF379UQU.bed.gz -P ./bed/
 # wget https://storage.googleapis.com/gtex_analysis_v7/reference/gencode.v19.genes.v7.patched_contigs.gtf 
 # wget https://storage.googleapis.com/gtex_analysis_v7/reference/gencode.v19.transcripts.patched_contigs.gtf 
 
+
 options(stringsAsFactors = FALSE)
+library(optparse)
 library(GenomicFeatures)
 library(tidyverse)
 library(data.table)
 library(rtracklayer)
 library(plyranges)
-library(optparse)
 
 option_list = list(
   make_option(c("-b", "--bed_directory"), type="character", default=NULL, 
@@ -20,6 +24,8 @@ option_list = list(
               help="bin", metavar="character"),
   make_option(c("-g", "--gtf_file"), type="character", default=NULL, 
               help="gtf file", metavar="character"),
+  make_option(c("-t", "--input_type"), type="character", default=NULL, 
+              help="input type", metavar="character"),
   make_option(c("-o", "--output"), type="character", default=NULL, 
               help="output", metavar="character")
 )
@@ -31,20 +37,31 @@ bed_directory = opt$bed_directory
 bin = as.numeric(opt$bin)
 output = opt$output
 gtf_file = opt$gtf_file
+input_type = opt$input_type
 
 #bin=100
 #bed_directory  = "bed"
-#output = "RNA_indx"
+#output = "custom_Promoter"
 #gtf_file="./gtf/gencode.v19.genes.v7.patched_contigs.gtf"
 
 
 # read gene coordinate
-import(gtf_file)%>%
-  as_tibble()%>%
-  filter(type=="exon")%>%
-  dplyr::select(seqnames,start,end,width,strand,transcript_id)%>%GRanges() -> gene_genome_coord
-seqlevelsStyle(gene_genome_coord)="UCSC"
-gene_genome_coord = split(gene_genome_coord,as.factor(gene_genome_coord$transcript_id))
+gtf = import(gtf_file)
+if(input_type=="promoter"){
+  txdb <- GenomicFeatures::makeTxDbFromGRanges(gtf)
+  genome_coord<-promoters(txdb,upstream = 2000,downstream = 1000)
+  genome_coord$transcript_id=genome_coord$tx_name
+  genome_coord$tx_id=NULL
+  genome_coord$tx_name=NULL
+}else if(input_type=="rna"){
+  gtf%>%
+    as_tibble()%>%
+    filter(type=="exon")%>%
+    dplyr::select(seqnames,start,end,width,strand,transcript_id)%>%GRanges() -> genome_coord
+}
+
+seqlevelsStyle(genome_coord)="UCSC"
+genome_coord = split(genome_coord,as.factor(genome_coord$transcript_id))
 
 
 list.files(path = bed_directory,pattern = "*.bed",full.names = T)%>%
@@ -57,7 +74,7 @@ list.files(path = bed_directory,pattern = "*.bed",full.names = T)%>%
       GRanges()
     
     # convert genome coordinate to RNA coordinate
-    mapToTranscripts(bed, gene_genome_coord,ignore.strand = FALSE) -> bed_rna_coord
+    mapToTranscripts(bed, genome_coord,ignore.strand = FALSE) -> bed_rna_coord
     
     # split into bins
     bed_rna_coord%>%
@@ -83,7 +100,7 @@ list.files(path = bed_directory,pattern = "*.bed",full.names = T)%>%
   bind_rows() -> ds
 
 # exon index
-gene_genome_coord%>%
+genome_coord%>%
   unlist()%>%
   group_by(transcript_id)%>%
   summarise(width=sum(width))%>%
@@ -98,10 +115,11 @@ gene_genome_coord%>%
   group_by(transcript_id)%>%
   mutate(N=ifelse(indx%in%max(indx),last_bin_val,N))%>%
   dplyr::select(-last_bin_val)%>%
-  mutate(feature_name="exon")%>%
-  bind_rows(.,ds) -> ds
-  
-ds$feature_name%>%unique()%>%factor()%>%relevel(.,ref = "exon") -> feature_names
+  mutate(feature_name=ifelse(input_type=="promoter", "mask", "exon"))%>%
+  bind_rows(.,ds)%>%
+  filter(N>0)-> ds
+
+ds$feature_name%>%unique()%>%factor()%>%relevel(.,ref = ifelse(input_type=="promoter", "mask", "exon")) -> feature_names
 
 ds%>%
   ungroup()%>%
@@ -128,4 +146,3 @@ feature_names%>%
   write.table(.,file=paste0(output,"_feature_name.txt"),
               append = F,quote = F,sep = "\t",row.names = F,col.names = F)
 system(paste0("gzip ",output,"_feature_name.txt"))
-
