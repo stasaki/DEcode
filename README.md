@@ -73,7 +73,7 @@ python functions/to_sparse.py custom_promoter.txt
 rm custom_RNA.txt 
 rm custom_promoter.txt 
 ```
-This will convert the RNA-coordinate peaks in the custom_RNA.txt file and the custom_promoter.txt file to sparse Pandas DataFrames (custom_RNA.pkl and custom_promoter.pkl
+This will convert the RNA-coordinate peaks in the `custom_RNA.txt` file and the `custom_promoter.txt` file to sparse Pandas DataFrames (`custom_RNA.pkl` and `custom_promoter.pkl`).
 
 4. Place `custom_RNA.pkl`, `custom_RNA_gene_name.txt.gz`, and `custom_RNA_feature_name.txt.gz` in the directory where RNA features are located, for example: `./data/toy/RNA_features/`. Also place `custom_promoter.pkl`, `custom_promoter_gene_name.txt.gz`, and `custom_promoter_feature_name.txt.gz` in the directory for promoter features, for example: `./data/toy/Promoter_features/`.
 
