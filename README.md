@@ -12,7 +12,7 @@ You can read more about this method in [this paper](https://doi.org/10.1038/s422
 
 You can run DEcode on [Code Ocean platform](https://doi.org/10.24433/CO.0084803.v1) without setting up a computational environment. Our Code Ocean capsule provides reproducible workflows, all processed data, and pre-trained models for tissue- and person-specific transcriptomes and DEprior, at gene- or transcript level.   
 
-### Add RNA features
+### Add input features
 #### Prerequisites
 Before running the scripts to create custom input data, you must have the following python libraries installed on your system:
 
@@ -34,12 +34,18 @@ Also you need to install the following R packages:
 #GTF file from GTEXv7 (hg19)
 mkdir gtf
 wget https://storage.googleapis.com/gtex_analysis_v7/reference/gencode.v19.genes.v7.patched_contigs.gtf -P ./gtf/
+
 #eCLIP-seq peaks from Encode (hg19)
 mkdir bed_rna
 wget https://www.encodeproject.org/files/ENCFF039BKT/@@download/ENCFF039BKT.bed.gz -P ./bed_rna/
 wget https://www.encodeproject.org/files/ENCFF379UQU/@@download/ENCFF379UQU.bed.gz -P ./bed_rna/
+
+#ChIP-seq peaks from Encode (hg19)
+mkdir bed_promoter
+wget https://www.encodeproject.org/files/ENCFF553GPK/@@download/ENCFF553GPK.bed.gz -P ./bed_promoter/
+wget https://www.encodeproject.org/files/ENCFF549TYR/@@download/ENCFF549TYR.bed.gz -P ./bed_promoter/
 ```
-This will create directories gtf and bed_rna, and download the GTF file and two eCLIP-seq bed files into them.
+This will create directories `gtf`, `bed_rna`, and `bed_promoter`, and download the GTF file, two eCLIP-seq bed files, and two ChIP-seq bed files into them.
 
 Our input data for the gene-level model was constructed based on the gencode.v19.transcripts.patched_contigs.gtf file from the GTEXv7 dataset. This file contains only one representative transcript for each gene for the human genome (hg19).
 
@@ -53,23 +59,32 @@ Rscript functions/bed_to_RNA_coord.R -b ./bed_rna/ -n 100 -g gtf/gencode.v19.gen
 ```
 This will convert bed files in the genome coordinates in the `./bed_rna/` directory to RNA coordinates using the gencode.v19.genes.v7.patched_contigs.gtf file and output as `custom_RNA.txt`.
 
+If you want to map ChIP-seq peaks to promoters, use the -t option as promoter.
+```bash
+Rscript functions/bed_to_RNA_coord.R -b ./bed_promoter/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -t promoter -o custom_promoter
+```
+
 3. To convert RNA-coordinate peaks to Pandas format, use the following command:
 ```bash
 python functions/to_sparse.py custom_RNA.txt
-rm custom_RNA.txt 
-```
-This will convert the RNA-coordinate peaks in the custom.txt file to a sparse Pandas DataFrame (custom_RNA.pkl).
+python functions/to_sparse.py custom_promoter.txt
 
-4. Place `custom_RNA.pkl`, `custom_RNA_gene_name.txt.gz`, and `custom_RNA_feature_name.txt.gz` in the directory where RNA features are located, for example: `./data/toy/RNA_features/`.
+# clean up
+rm custom_RNA.txt 
+rm custom_promoter.txt 
+```
+This will convert the RNA-coordinate peaks in the custom_RNA.txt file and the custom_promoter.txt file to sparse Pandas DataFrames (custom_RNA.pkl and custom_promoter.pkl
+
+4. Place `custom_RNA.pkl`, `custom_RNA_gene_name.txt.gz`, and `custom_RNA_feature_name.txt.gz` in the directory where RNA features are located, for example: `./data/toy/RNA_features/`. Also place `custom_promoter.pkl`, `custom_promoter_gene_name.txt.gz`, and `custom_promoter_feature_name.txt.gz` in the directory for promoter features, for example: `./data/toy/Promoter_features/`.
 
 5. Modify the code (Run_DEcode_toy.ipynb) as follows:
 ```python
 mRNA_data_loc = "./data/toy/RNA_features/"
 mRNA_annotation_data = ["POSTAR","TargetScan","custom_RNA"]
+promoter_data_loc = "./data/toy/Promoter_features/"
+promoter_annotation_data = ["GTRD","custom_promoter"]
 ```
-This will update the location of the mRNA data and specify that the custom.pkl file should be used as part of the RNA annotation data.
-
-### Add promoter features
+This modification to the code will instruct it to utilize the custom_RNA.pkl and custom_promoter.pkl files as part of the RNA annotation data and promoter annotation data, respectively.
 
 
 
