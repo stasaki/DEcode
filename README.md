@@ -59,19 +59,20 @@ The input data for the transcript-level model was created based on  `https://sto
 ```bash
 Rscript functions/bed_to_RNA_coord.R -b ./bed_rna/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -t rna -o custom_RNA
 ```
-This will convert bed files in the genome coordinates in the `./bed_rna/` directory to RNA coordinates using the gencode.v19.genes.v7.patched_contigs.gtf file and output as `custom_RNA.txt`.
-
-If you want to map ChIP-seq peaks to promoters, use the -t option as promoter.
-```bash
-Rscript functions/bed_to_RNA_coord.R -b ./bed_promoter/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -t promoter -o custom_promoter
-```
-
 ##### Arguments
 - bed_directory: Character string specifying the directory containing the bed files
 - bin: Numeric value specifying the size of bins for the genomic features
 - gtf_file: Character string specifying the path to the GTF file
 - input_type: Character string specifying the experiment type of the bed files, i.e. "promoter" or "rna"
 - output: Character string specifying the path and filename of the output file
+
+
+This will convert bed files in the genome coordinates in the `./bed_rna/` directory to RNA coordinates using the gencode.v19.genes.v7.patched_contigs.gtf file and output as `custom_RNA.txt`.
+
+If you want to map ChIP-seq peaks to promoters, use the -t option as promoter.
+```bash
+Rscript functions/bed_to_RNA_coord.R -b ./bed_promoter/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -t promoter -o custom_promoter
+```
 
 
 3. To convert RNA-coordinate peaks to Pandas format, use the following command:
