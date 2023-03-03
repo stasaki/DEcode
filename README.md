@@ -53,6 +53,8 @@ If you use a different gene model, please make sure to filter GTF file and selec
 
 The input data for the transcript-level model was created based on  `https://storage.googleapis.com/gtex_analysis_v7/reference/gencode.v19.transcripts.patched_contigs.gtf`. It is not necessary to filter the GTF file for the transcript-level model.
 
+
+
 2. Convert genome coordinates to RNA coordinates using the following command:
 ```bash
 Rscript functions/bed_to_RNA_coord.R -b ./bed_rna/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -t rna -o custom_RNA
@@ -64,13 +66,12 @@ If you want to map ChIP-seq peaks to promoters, use the -t option as promoter.
 Rscript functions/bed_to_RNA_coord.R -b ./bed_promoter/ -n 100 -g gtf/gencode.v19.genes.v7.patched_contigs.gtf -t promoter -o custom_promoter
 ```
 
-Arguments
-
-bed_directory: Character string specifying the directory containing the bed files
-bin: Numeric value specifying the size of bins for the genomic features
-gtf_file: Character string specifying the path to the GTF file
-input_type: Character string specifying the experiment type of the bed files, i.e. "promoter" or "rna"
-output: Character string specifying the path and filename of the output file
+##### Arguments
+- bed_directory: Character string specifying the directory containing the bed files
+- bin: Numeric value specifying the size of bins for the genomic features
+- gtf_file: Character string specifying the path to the GTF file
+- input_type: Character string specifying the experiment type of the bed files, i.e. "promoter" or "rna"
+- output: Character string specifying the path and filename of the output file
 
 
 3. To convert RNA-coordinate peaks to Pandas format, use the following command:
@@ -84,7 +85,9 @@ rm custom_promoter.txt
 ```
 This will convert the RNA-coordinate peaks in the `custom_RNA.txt` file and the `custom_promoter.txt` file to sparse Pandas DataFrames (`custom_RNA.pkl` and `custom_promoter.pkl`).
 
+
 4. Place `custom_RNA.pkl`, `custom_RNA_gene_name.txt.gz`, and `custom_RNA_feature_name.txt.gz` in the directory where RNA features are located, for example: `./data/toy/RNA_features/`. Also place `custom_promoter.pkl`, `custom_promoter_gene_name.txt.gz`, and `custom_promoter_feature_name.txt.gz` in the directory for promoter features, for example: `./data/toy/Promoter_features/`.
+
 
 5. Modify the code (Run_DEcode_toy.ipynb) as follows:
 ```python
