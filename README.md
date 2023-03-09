@@ -12,7 +12,7 @@ You can read more about this method in [this paper](https://doi.org/10.1038/s422
 
 You can run DEcode on [Code Ocean platform](https://doi.org/10.24433/CO.0084803.v1) without setting up a computational environment. Our Code Ocean capsule provides reproducible workflows, all processed data, and pre-trained models for tissue- and person-specific transcriptomes and DEprior, at gene- or transcript level.   
 
-### Add input features
+### Prepare input features
 #### Prerequisites
 Before running the scripts to create custom input data, you must have the following python libraries installed on your system:
 
